@@ -1,0 +1,109 @@
+﻿@page
+@model IdentityService.Pages.Account.Register.Index
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-5">
+
+                    <div class="text-center mb-5">
+                        <h2 class="mb-2">Create your account</h2>
+                        <p class="text-muted mb-0">
+                            Enter your details below to get started.
+                        </p>
+                    </div>
+
+                    <partial name="_ValidationSummary" />
+
+                    <form asp-page="/Account/Register/Index">
+                        <input type="hidden" asp-for="Input.ReturnUrl" />
+
+                        <div class="form-group">
+                            <label asp-for="Input.Username">Username</label>
+                            <input asp-for="Input.Username"
+                                   class="form-control form-control-lg"
+                                   placeholder="Enter your username"
+                                   autocomplete="username"
+                                   autofocus />
+                            <span asp-validation-for="Input.Username"
+                                  class="text-danger small"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Input.Email">Email address</label>
+                            <input asp-for="Input.Email"
+                                   class="form-control form-control-lg"
+                                   placeholder="name@example.com"
+                                   autocomplete="email" />
+                            <span asp-validation-for="Input.Email"
+                                  class="text-danger small"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Input.FullName">Full name</label>
+                            <input asp-for="Input.FullName"
+                                   class="form-control form-control-lg"
+                                   placeholder="Enter your full name"
+                                   autocomplete="name" />
+                            <span asp-validation-for="Input.FullName"
+                                  class="text-danger small"></span>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label asp-for="Input.Password">Password</label>
+                            <input asp-for="Input.Password"
+                                   type="password"
+                                   class="form-control form-control-lg"
+                                   placeholder="Create a password"
+                                   autocomplete="new-password" />
+                            <span asp-validation-for="Input.Password"
+                                  class="text-danger small"></span>
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-primary btn-lg btn-block"
+                                name="Input.Button"
+                                value="register">
+                            Create account
+                        </button>
+
+                        <button type="submit"
+                                class="btn btn-outline-secondary btn-block mt-3"
+                                name="Input.Button"
+                                value="cancel">
+                            Cancel
+                        </button>
+
+                        <div class="text-center border-top mt-4 pt-4">
+                            <span class="text-muted">
+                                Already have an account?
+                            </span>
+
+                            <a asp-page="../Login/Index"
+                               asp-route-returnUrl="@Model.Input.ReturnUrl"
+                               class="ml-1">
+                                Sign in
+                            </a>
+                        </div>
+                    </form>
+
+                    @if (Model.RegisterSuccess)
+                    {
+                        <div class="alert alert-success mt-4">
+                            <strong>Account created successfully!</strong>
+                            <div class="mt-1">
+                                <a href="@Model.ClientAppUrl" class="alert-link">
+                                    Return to the site to sign in
+                                </a>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
