@@ -5,3 +5,45 @@ Accept: application/json
 
 ###
 
+### Get all auctions
+GET {{AuctionService_HostAddress}}/api/auctions
+Accept: application/json
+
+### Get auctions updated after a date
+GET {{AuctionService_HostAddress}}/api/auctions?date=2026-09-09T10:00:00Z
+Accept: application/json
+
+### Get one auction by id
+GET {{AuctionService_HostAddress}}/api/auctions/ford-mustang
+Accept: application/json
+
+### Create auction
+POST {{AuctionService_HostAddress}}/api/auctions
+Content-Type: application/json
+
+{
+  "make": "BMW",
+  "model": "M3",
+  "color": "Black",
+  "year": 2023,
+  "mileage": 10000,
+  "imageUrl": "https://example.com/bmw.jpg",
+  "reservePrice": 30000,
+  "auctionEnd": "2026-09-20T12:00:00Z",
+  "description": "BMW M3 in excellent condition"
+}
+
+### Update auction
+PUT {{AuctionService_HostAddress}}/api/auctions/cda83b35-31ca-4eef-99f0-1308e7bf2da0
+Content-Type: application/json
+
+{
+  "make": "BMW",
+  "model": "M4",
+  "color": "Blue",
+  "year": 2023,
+  "mileage": 11000
+}
+
+### Delete auction
+DELETE {{AuctionService_HostAddress}}/api/auctions/cda83b35-31ca-4eef-99f0-1308e7bf2da0
