@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using Meilisearch;
+using SearchService.Models;
 
 namespace SearchService.Handlers;
 
