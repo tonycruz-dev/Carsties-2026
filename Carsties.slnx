@@ -1,6 +1,7 @@
 <Solution>
   <Project Path="src/AuctionService/AuctionService.csproj" />
   <Project Path="src/Contracts/Contracts.csproj" Id="aa7ea4e8-9869-44c6-a863-5b4c4cab277c" />
+  <Project Path="src/GatewayService/GatewayService.csproj" Id="515477a2-055b-4378-96ba-4668c1c7ec1b" />
   <Project Path="src/IdentityService/IdentityService.csproj" Id="25e8ff87-0ee1-4e28-9298-55a19a61f4b4" />
   <Project Path="src/SearchService/SearchService.csproj" />
 </Solution>
