@@ -6,6 +6,8 @@ export type ListingSearchParams = {
   searchTerm?: string | string[];
   orderBy?: string | string[];
   filterBy?: string | string[];
+  seller?: string;
+  winner?: string;
 };
 
 const baseUrl = process.env.BASE_API_URL || "http://localhost:6001";
@@ -13,7 +15,15 @@ const baseUrl = process.env.BASE_API_URL || "http://localhost:6001";
 export async function getListings(
   params: ListingSearchParams = {},
 ): Promise<PagedResult<Auction>> {
-  const { pageNumber, pageSize, searchTerm, orderBy, filterBy } = params;
+  const {
+    pageNumber,
+    pageSize,
+    searchTerm,
+    orderBy,
+    filterBy,
+    seller,
+    winner,
+  } = params;
 
   const query = new URLSearchParams({
     pageNumber: pageNumber?.toString() || String(1),
@@ -23,6 +33,9 @@ export async function getListings(
   if (searchTerm) query.set("searchTerm", searchTerm.toString());
   query.set("orderBy", orderBy?.toString() || "endingSoon");
   query.set("filterBy", filterBy?.toString() || "live");
+
+  if (winner) query.set("winner", winner);
+  if (seller) query.set("seller", seller);
 
   const res = await fetch(`${baseUrl}/search?${query}`);
 
